@@ -1,17 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝紫渐变 · 深紫诗行</title>
+    <style>
+        /* 全局重置 & 基础 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* 蓝紫渐变 —— 从深邃蓝到魅惑紫 */
+            background: linear-gradient(145deg, #0b1a3a 0%, #1e2f6b 30%, #4b2b7a 60%, #7b3f9e 85%, #a86bc7 100%);
+            font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+            padding: 1.5rem;
+            /* 增加一点柔光感 */
+            position: relative;
+        }
+
+        /* 额外光晕点缀 (可选) */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(120, 80, 200, 0.15) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 70%, rgba(60, 30, 150, 0.20) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* 主卡片 —— 磨砂玻璃质感，让深紫色文本更突出 */
+        .poem-card {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+            width: 100%;
+            padding: 3.5rem 3rem;
+            background: rgba(10, 6, 30, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 3.5rem 1.5rem 3.5rem 1.5rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
+                        0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(200, 170, 255, 0.10);
+        }
+
+        /* 深紫色文本 —— 核心要求 */
+        .deep-purple-text {
+            color: #2f0a4a;        /* 深紫底色 */
+            font-weight: 600;
+            font-size: clamp(2.2rem, 8vw, 3.8rem);
+            line-height: 1.5;
+            letter-spacing: 0.03em;
+            text-shadow: 0 2px 12px rgba(180, 120, 255, 0.25),
+                         0 0 2px rgba(255, 215, 255, 0.3);
+            /* 让深紫色在蓝紫渐变背景上更沉静、突出 */
+            font-family: 'Georgia', 'Times New Roman', '楷体', 'KaiTi', serif;
+            white-space: pre-line;   /* 保留换行 */
+            word-break: break-word;
+        }
+
+        /* 每行独立微调 (可选) */
+        .deep-purple-text span {
+            display: block;
+        }
+
+        /* 装饰细线 (增加层次) */
+        .poem-card::after {
+            content: '✦';
+            display: block;
+            margin-top: 2rem;
+            color: rgba(180, 140, 220, 0.25);
+            font-size: 1.8rem;
+            letter-spacing: 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* 在卡片底部加一点极淡的辉光 */
+        .poem-card::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: 10%;
+            width: 80%;
+            height: 40%;
+            background: radial-gradient(ellipse, rgba(160, 100, 220, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            border-radius: 50%;
+            filter: blur(30px);
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 480px) {
+            .poem-card {
+                padding: 2.5rem 1.8rem;
+                border-radius: 2.5rem 0.8rem 2.5rem 0.8rem;
+            }
+            .deep-purple-text {
+                font-size: clamp(1.8rem, 10vw, 2.8rem);
+                line-height: 1.6;
+            }
+        }
+
+        /* 小屏手机保留换行 */
+        @media (max-width: 360px) {
+            .poem-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .deep-purple-text {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* 鼠标悬浮优雅反馈 */
+        .poem-card:hover {
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7),
+                        0 0 0 1px rgba(200, 170, 255, 0.15) inset;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* 去除默认的点击高亮 */
+        .poem-card {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
 <body>
-
-<h1>欢迎来到 AILIS Studio！</h1>
-
-<p>这里是我的个人网站。</p>
-
-<p>正在开发：</p>
-
-<ul>
-<li>Ren'Py视觉小说</li>
-<li>老婆电子鱼缸</li>
-</ul>
-
+    <div class="poem-card">
+        <!-- 深紫色文本，完全符合要求 -->
+        <div class="deep-purple-text">
+            从某天开始
+            世界没法理解
+            究竟是世界的问题
+            还是你的问题？
+        </div>
+        <!-- 可选的微光装饰 (已用伪元素实现) -->
+    </div>
 </body>
 </html>
